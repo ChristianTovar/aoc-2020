@@ -3,7 +3,7 @@ defmodule Aoc2020.Day01Test do
 
   import Aoc2020.Day01
 
-  test "part1" do
+  setup_all do
     {:ok, input_string} = File.read("input/day_01.txt")
 
     input =
@@ -11,7 +11,16 @@ defmodule Aoc2020.Day01Test do
       |> String.split()
       |> Enum.map(&String.to_integer(&1))
 
+    {:ok, input: input}
+  end
+
+  test "part1", state do
     expected_result = 870_331
-    assert expected_result == part1(input)
+    assert expected_result == part1(state.input)
+  end
+
+  test "part2", state do
+    expected_result = 283_025_088
+    assert expected_result == part2(state.input)
   end
 end
