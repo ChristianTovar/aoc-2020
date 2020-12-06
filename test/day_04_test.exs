@@ -19,4 +19,9 @@ defmodule Aoc2020.Day04Test do
     expected_result = 226
     assert expected_result == part1(state.input)
   end
+
+  test "part2", state do
+    expected_result = 160
+    assert expected_result == part2(state.input)
+  end
 end
