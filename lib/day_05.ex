@@ -6,6 +6,17 @@ defmodule Aoc2020.Day05 do
     |> Enum.max()
   end
 
+  @spec part2([String.t()]) :: non_neg_integer()
+  def part2(input) do
+    ids = Enum.map(input, &decode_seat(&1))
+    min_id = Enum.min(ids)
+    max_id = Enum.max(ids)
+
+    min_id..max_id
+    |> Enum.reject(&(&1 in ids))
+    |> Enum.at(0)
+  end
+
   defp decode_seat(letters) do
     row = Enum.slice(letters, 0..6)
     column = Enum.slice(letters, 7..9)
